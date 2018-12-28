@@ -298,16 +298,16 @@ class DecisionTree(object):
             #print("Length of right split",len(index_right_split))#,index_right_split)
             class_values = best_features_list[4]
             #print ("Length of class values", len(class_values))
-            left_dict,class_val1 = self.get_remainder_dict(dict_of_everything,index_left_split)
+            left_dict, class_val1 = self.get_remainder_dict(dict_of_everything, index_right_split)
             #print("index of left split",len(index_left_split))
             #print("Left class values is",len(class_val1))
-            right_dict,class_val2 = self.get_remainder_dict(dict_of_everything,index_right_split)
+            right_dict, class_val2 = self.get_remainder_dict(dict_of_everything, index_left_split)
             #print("indx of right split",len(index_right_split))
             #print("right class values is",len(class_val2))
             leftchild = self.create_decision_tree(left_dict,class_val1,eta_min_val)
             #leftchild = None
             rightchild = self.create_decision_tree(right_dict,class_val2,eta_min_val)
-            root_node = Node(node_name,rightchild,leftchild,theta,False)
+            root_node = Node(node_name, leftchild, rightchild, theta, False)
             return root_node
 
     #method to predict the values for test data
